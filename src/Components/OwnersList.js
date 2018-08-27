@@ -11,6 +11,7 @@ export default class OwnersList  extends Component {
                         <div key={owner.id}>
                             <h5>Name: {owner.name}</h5>
                             <p>Phone Number: {owner.phone}</p>
+                            <button onClick={() => this.props.ownerLeft(owner.id)} className="button">Owner Left</button>
                         </div>
                     )
                 }

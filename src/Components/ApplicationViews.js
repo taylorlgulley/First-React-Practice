@@ -46,6 +46,30 @@ export default class ApplicationViews extends Component {
         }))
     }
 
+    fireEmployee = id => {
+        fetch(`http://localhost:5002/employees/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/employees`))
+        .then(e => e.json())
+        .then(employees => this.setState({
+            employees: employees
+        }))
+    }
+
+    ownerLeft = id => {
+        fetch(`http://localhost:5002/owners/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/owners`))
+        .then(e => e.json())
+        .then(owners => this.setState({
+            owners: owners
+        }))
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -56,10 +80,10 @@ export default class ApplicationViews extends Component {
                     return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                 }} />
                 <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList employees={this.state.employees} />
+                    return <EmployeeList fireEmployee={this.fireEmployee} employees={this.state.employees} />
                 }} />
                 <Route exact path="/owners" render={(props) => {
-                    return <OwnersList owners={this.state.owners} />
+                    return <OwnersList ownerLeft={this.ownerLeft} owners={this.state.owners} />
                 }} />
             </React.Fragment>
         )

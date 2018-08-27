@@ -27,7 +27,3 @@ export default class AnimalList extends Component {
         )
     }
 }
-
-// {(!this.props.showPunchline) ?
-//     <button onClick={this.props.showPunchlineClicked}>Tell Me</button>
-//     : null}
