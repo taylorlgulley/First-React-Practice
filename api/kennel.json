@@ -1,0 +1,25 @@
+{
+    "employees" : [
+        { "id": 1, "name": "Jessica Younker" },
+        { "id": 2, "name": "Jordan Nelson" },
+        { "id": 3, "name": "Zoe LeBlanc" },
+        { "id": 4, "name": "Blaise Roberts" }
+    ],
+    "locations" : [
+        { "id": 1, "name": "Nashville North", "address": "500 Circle Way" },
+        { "id": 2, "name": "Nashville South", "address": "10101 Binary Court" }
+    ],
+    "animals" : [
+        { "id": 1, "name": "Monkey", "type": "cat"},
+        { "id": 2, "name": "Lily", "type": "cat"},
+        { "id": 3, "name": "Prissy", "type": "cat"},
+        { "id": 4, "name": "Midnight", "type": "cat"},
+        { "id": 5, "name": "Nash", "type": "dog"}
+    ],
+    "owners" : [
+        { "id": 1, "name": "Taylor Gulley", "phone": "XXX-XXX-XXXX" },
+        { "id": 2, "name": "Shelby Scott", "phone": "XXX-XXX-XXXX" },
+        { "id": 3, "name": "Turner Landess", "phone": "XXX-XXX-XXXX" },
+        { "id": 4, "name": "Debbie Cochran", "phone": "XXX-XXX-XXXX" }
+    ]
+}

@@ -1,0 +1,21 @@
+.kennel {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.locations {
+    margin-top: 3em;
+    background-color: lightblue;
+}
+.employees {
+    margin-top: 3em;
+    background-color: lightcoral;
+}
+.animals {
+    margin-top: 3em;
+    background-color: lightsalmon;
+}
+.owners {
+    margin-top: 3em;
+    background-color: lightgreen;
+}
