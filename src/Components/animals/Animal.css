@@ -30,3 +30,13 @@
     margin: 12px 0 0 0;
     font-size: 0.7em;
 }
+
+.animalButton {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 3em 0 10px 0;
+}
+
+.animalForm {
+    margin-top: 3em;
+}

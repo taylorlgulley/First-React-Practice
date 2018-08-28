@@ -11,6 +11,17 @@ export default Object.create(null, {
             return fetch(`${remoteURL}/employees`).then(e => e.json())
         }
     },
+    post: {
+        value: function (newEmployee) {
+            return fetch(`${remoteURL}/employees`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newEmployee)
+            }).then(e => e.json())
+        }
+    },
     removeAndList: {
         value: function (id) {
             return fetch(`${remoteURL}/employees/${id}`, {
