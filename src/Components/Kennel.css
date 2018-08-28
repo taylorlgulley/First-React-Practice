@@ -25,7 +25,17 @@
     margin-top: 3em;
     background-color: lightgreen;
 }
+.owner {
+    margin-top: 3em;
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+}
 .button {
     background-color: white;
     border-radius: 25px;
+}
+.card-link {
+    display: flex;
+    justify-content: center;
 }
