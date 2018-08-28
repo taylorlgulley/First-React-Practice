@@ -15,6 +15,10 @@
     {
       "id": 4,
       "name": "Blaise Roberts"
+    },
+    {
+      "name": "Taylor Gulley",
+      "id": 5
     }
   ],
   "locations": [
@@ -54,6 +58,13 @@
       "id": 5,
       "name": "Nash",
       "type": "dog"
+    },
+    {
+      "name": "Sandy",
+      "breed": "Mix",
+      "type": "dog",
+      "employeeId": 1,
+      "id": 6
     }
   ],
   "owners": [
@@ -76,6 +87,11 @@
       "id": 4,
       "name": "Debbie Cochran",
       "phone": "XXX-XXX-XXXX"
+    },
+    {
+      "name": "Mark Hale",
+      "phone": "XXX-XXX-XXXX",
+      "id": 5
     }
   ]
 }
