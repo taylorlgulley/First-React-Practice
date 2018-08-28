@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import dog from "./DogIcon.png"
 import cat from "./CatIcon.png"
 import "./Animal.css"
@@ -15,6 +16,7 @@ export default class AnimalList extends Component {
                             <h5 className="card-title">
                                 <img src={(animal.type === "cat") ? cat : dog} className="icon" />
                                 {animal.name}
+                                <Link className="nav-link" to={`/animals/${animal.id}`}>Details</Link>
                                 <a href="#"
                                     onClick={() => this.props.deleteAnimal(animal.id)}
                                     className="card-link">Delete</a>

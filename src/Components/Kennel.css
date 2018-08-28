@@ -7,6 +7,12 @@
     margin-top: 3em;
     background-color: lightblue;
 }
+.employee {
+    margin-top: 3em;
+    background-color: lightcoral;
+    display: flex;
+    justify-content: center;
+}
 .employees {
     margin-top: 3em;
     background-color: lightcoral;
