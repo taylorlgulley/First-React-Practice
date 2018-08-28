@@ -7,6 +7,12 @@
     margin-top: 3em;
     background-color: lightblue;
 }
+.employee {
+    margin-top: 3em;
+    background-color: lightcoral;
+    display: flex;
+    justify-content: center;
+}
 .employees {
     margin-top: 3em;
     background-color: lightcoral;
@@ -19,7 +25,17 @@
     margin-top: 3em;
     background-color: lightgreen;
 }
+.owner {
+    margin-top: 3em;
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+}
 .button {
     background-color: white;
     border-radius: 25px;
+}
+.card-link {
+    display: flex;
+    justify-content: center;
 }
