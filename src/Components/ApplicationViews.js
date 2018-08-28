@@ -2,11 +2,15 @@ import { Route } from 'react-router-dom'
 import React, { Component } from "react"
 import AnimalList from './AnimalList'
 import AnimalDetail from './AnimalDetail'
+import AnimalManager from "../modules/AnimalManager"
 import LocationList from './LocationList'
+import LocationManager from "../modules/LocationManager"
 import EmployeeList from './employee/EmployeeList'
 import EmployeeDetail from './employee/EmployeeDetail'
+import EmployeeManager from '../modules/EmployeeManager'
 import OwnersList from './OwnersList'
 import OwnerDetail from './OwnerDetail'
+import OwnerManager from '../modules/OwnerManager'
 
 
 export default class ApplicationViews extends Component {
@@ -20,58 +24,43 @@ export default class ApplicationViews extends Component {
 
     componentDidMount() {
 
-        const newState = {}
-
-        fetch("http://localhost:5002/animals")
-            .then(r => r.json())
-            .then(animals => newState.animals = animals)
-            .then(() => fetch("http://localhost:5002/employees")
-                .then(r => r.json()))
-            .then(employees => newState.employees = employees)
-            .then(() => fetch("http://localhost:5002/locations")
-                .then(r => r.json()))
-            .then(locations => newState.locations = locations)
-            .then(() => fetch("http://localhost:5002/owners")
-                .then(r => r.json()))
-            .then(owners => newState.owners = owners)
-            .then(() => this.setState(newState))
-    }
-
-    deleteAnimal = id => {
-        fetch(`http://localhost:5002/animals/${id}`, {
-            method: "DELETE"
+        // Example code. Make this fit into how you have written yours.
+        AnimalManager.getAll().then(allAnimals => {
+            this.setState({
+                animals: allAnimals
+            })
         })
-            .then(e => e.json())
-            .then(() => fetch(`http://localhost:5002/animals`))
-            .then(e => e.json())
-            .then(animals => this.setState({
-                animals: animals
-            }))
+        EmployeeManager.getAll().then(allEmployees => {
+            this.setState({
+                employees: allEmployees
+            })
+        })
+        LocationManager.getAll().then(allLocations => {
+            this.setState({
+                locations: allLocations
+            })
+        })
+        OwnerManager.getAll().then(allOwners => {
+            this.setState({
+                owners: allOwners
+            })
+        })
     }
 
-    fireEmployee = id => {
-        fetch(`http://localhost:5002/employees/${id}`, {
-            method: "DELETE"
-        })
-            .then(e => e.json())
-            .then(() => fetch(`http://localhost:5002/employees`))
-            .then(e => e.json())
-            .then(employees => this.setState({
-                employees: employees
-            }))
-    }
+    deleteAnimal = id => AnimalManager.removeAndList(id)
+    .then(animals => this.setState({
+        animals: animals
+    }))
 
-    ownerLeft = id => {
-        fetch(`http://localhost:5002/owners/${id}`, {
-            method: "DELETE"
-        })
-            .then(e => e.json())
-            .then(() => fetch(`http://localhost:5002/owners`))
-            .then(e => e.json())
-            .then(owners => this.setState({
-                owners: owners
-            }))
-    }
+    fireEmployee = id => EmployeeManager.removeAndList(id)
+    .then(employees => this.setState({
+        employees: employees
+    }))
+
+    ownerLeft = id => OwnerManager.removeAndList(id)
+    .then(owners => this.setState({
+        owners: owners
+    }))
 
     render() {
         return (
