@@ -1,5 +1,6 @@
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from "react-router-dom"
 import React, { Component } from "react"
+import Login from './login/Login'
 import AnimalList from './animals/AnimalList'
 import AnimalDetail from './animals/AnimalDetail'
 import AnimalForm from './animals/AnimalForm'
@@ -17,6 +18,9 @@ import OwnerManager from '../modules/OwnerManager'
 
 
 export default class ApplicationViews extends Component {
+
+    // Check if credentials are in local storage
+    isAuthenticated = () => localStorage.getItem("credentials") !== null
 
     state = {
         employees: [],
@@ -85,20 +89,30 @@ export default class ApplicationViews extends Component {
 
     editAnimal = (animal, id) => {
         return AnimalManager.edit(animal, id)
-        .then(() => AnimalManager.getAll())
-        .then(animals => this.setState({
-            animals: animals
-        }))
+            .then(() => AnimalManager.getAll())
+            .then(animals => this.setState({
+                animals: animals
+            }))
     }
 
     render() {
         return (
             <React.Fragment>
-                <Route exact path="/" render={(props) => {
-                    return <LocationList locations={this.state.locations} />
+                <Route path="/login" component={Login} />
+                <Route exact path="/" component={Login} />
+                <Route exact path="/locations" render={(props) => {
+                    if (this.isAuthenticated()) {
+                        return <LocationList locations={this.state.locations} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
                 }} />
                 <Route exact path="/animals" render={(props) => {
-                    return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                    if (this.isAuthenticated()) {
+                        return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
                 }} />
                 <Route exact path="/animals/new" render={(props) => {
                     return <AnimalForm {...props} addAnimal={this.addAnimal} employees={this.state.employees} />
@@ -107,7 +121,11 @@ export default class ApplicationViews extends Component {
                     return <AnimalDetail {...props} editAnimal={this.editAnimal} deleteAnimal={this.deleteAnimal} animals={this.state.animals} employees={this.state.employees} />
                 }} />
                 <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList {...props} fireEmployee={this.fireEmployee} employees={this.state.employees} />
+                    if (this.isAuthenticated()) {
+                        return <EmployeeList {...props} fireEmployee={this.fireEmployee} employees={this.state.employees} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
                 }} />
                 <Route exact path="/employees/new" render={(props) => {
                     return <EmployeeForm {...props} addEmployee={this.addEmployee} />
@@ -116,7 +134,11 @@ export default class ApplicationViews extends Component {
                     return <EmployeeDetail {...props} fireEmployee={this.fireEmployee} employees={this.state.employees} />
                 }} />
                 <Route exact path="/owners" render={(props) => {
-                    return <OwnersList {...props} ownerLeft={this.ownerLeft} owners={this.state.owners} />
+                    if (this.isAuthenticated()) {
+                        return <OwnersList {...props} ownerLeft={this.ownerLeft} owners={this.state.owners} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
                 }} />
                 <Route exact path="/owners/new" render={(props) => {
                     return <OwnerForm {...props} addOwner={this.addOwner} />
