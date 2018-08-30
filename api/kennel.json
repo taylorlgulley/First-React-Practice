@@ -37,33 +37,43 @@
     {
       "id": 1,
       "name": "Monkey",
-      "type": "cat"
+      "type": "cat",
+      "breed": "long hair smokey-grey",
+      "employeeId": 1
     },
     {
       "id": 2,
       "name": "Lily",
-      "type": "cat"
+      "type": "cat",
+      "breed": "tortoise shell grey brown",
+      "employeeId": 2
     },
     {
       "id": 3,
       "name": "Prissy",
-      "type": "cat"
+      "type": "cat",
+      "breed": "grey with white markings",
+      "employeeId": 2
     },
     {
       "id": 4,
       "name": "Midnight",
-      "type": "cat"
+      "type": "cat",
+      "breed": "black short hair",
+      "employeeId": 3
     },
     {
       "id": 5,
       "name": "Nash",
-      "type": "dog"
+      "type": "dog",
+      "breed": "curly short white hair",
+      "employeeId": 4
     },
     {
       "name": "Sandy",
-      "breed": "Mix",
+      "breed": "short blonde hair",
       "type": "dog",
-      "employeeId": 1,
+      "employeeId": 3,
       "id": 6
     }
   ],

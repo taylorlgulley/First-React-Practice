@@ -22,6 +22,17 @@ export default Object.create(null, {
             }).then(e => e.json())
         }
     },
+    edit: {
+        value: function (editedAnimal, id) {
+            return fetch(`${remoteURL}/animals/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(editedAnimal)
+            }).then(e => e.json())
+        }
+    },
     removeAndList: {
         value: function (id) {
             return fetch(`${remoteURL}/animals/${id}`, {

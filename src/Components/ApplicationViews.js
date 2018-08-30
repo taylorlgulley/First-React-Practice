@@ -83,6 +83,14 @@ export default class ApplicationViews extends Component {
             owners: owners
         }))
 
+    editAnimal = (animal, id) => {
+        return AnimalManager.edit(animal, id)
+        .then(() => AnimalManager.getAll())
+        .then(animals => this.setState({
+            animals: animals
+        }))
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -96,7 +104,7 @@ export default class ApplicationViews extends Component {
                     return <AnimalForm {...props} addAnimal={this.addAnimal} employees={this.state.employees} />
                 }} />
                 <Route exact path="/animals/:animalId(\d+)" render={(props) => {
-                    return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                    return <AnimalDetail {...props} editAnimal={this.editAnimal} deleteAnimal={this.deleteAnimal} animals={this.state.animals} employees={this.state.employees} />
                 }} />
                 <Route exact path="/employees" render={(props) => {
                     return <EmployeeList {...props} fireEmployee={this.fireEmployee} employees={this.state.employees} />
